@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tartarus Project | Tan Productions</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #111;
+            overflow-x: hidden;
+        }
+        nav {
+            position: fixed; top: 0; width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px); z-index: 1000;
+            padding: 1rem 2rem; transition: all 0.3s ease;
+        }
+        nav.scrolled { box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1); }
+        .nav-container {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem; font-weight: 700;
+            background: linear-gradient(45deg, #dc2626, #991b1b);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links a {
+            text-decoration: none; color: #333; font-weight: 500; transition: all 0.3s ease;
+            position: relative;
+        }
+        .nav-links a:hover { color: #dc2626; }
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0;
+            background: linear-gradient(45deg, #dc2626, #991b1b);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after { width: 100%; }
+        .project-hero {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            background: #000;
+        }
+        .project-hero img {
+            max-width: 400px;
+            width: 90%;
+            height: auto;
+            display: block;
+            margin: 0 auto 1.5rem;
+        }
+        .project-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            color: white;
+        }
+        .section {
+            padding: 5rem 2rem;
+            background: white;
+        }
+        .container {
+            max-width: 1200px; margin: 0 auto;
+        }
+        .section-title {
+            text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;
+            background: linear-gradient(45deg, #dc2626, #991b1b);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .section-subtitle {
+            text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 3rem;
+            max-width: 600px; margin-left: auto; margin-right: auto;
+        }
+        .project-details {
+            display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; margin-top: 3rem;
+        }
+        .project-description p { margin-bottom: 1.5rem; color: #555; }
+        .project-sidebar {
+            background: #f9fafb; padding: 1.5rem; border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .project-sidebar h3 { margin-bottom: 1rem; color: #dc2626; }
+        .project-sidebar ul { list-style: none; }
+        .project-sidebar li { margin-bottom: 0.5rem; color: #555; }
+        footer {
+            background: #1a1a1a; color: white; text-align: center; padding: 3rem 2rem;
+        }
+        .footer-links {
+            display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .footer-links a { color: #ccc; text-decoration: none; }
+        .footer-links a:hover { color: white; }
+        @media (max-width: 768px) {
+            .project-details { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">Tan Productions</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="project-hero">
+        <img src="TartarusLogo.jpeg" alt="Tartarus Logo">
+        <h1>Tartarus</h1>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">About This Project</h2>
+            <p class="section-subtitle">A robot to play the verbal game "Atlas".</p>
+
+            <div class="project-details">
+                <div class="project-description">
+                    <p><strong>Atlas</strong> is a game for 2+ players where the first person tells the name of a place (Country/City/State) and the next player says the name of a different place from
+                    the last letter of the previous place.</p>
+                    <p>The gameplay loop continues until someone cannot say a place from that letter and that player is <b>eliminated</b>. The next player says a place from the letter instead.</p>
+                    <p> You can find the finished project <a href=""></a>Here</p>
+                </div>
+
+                <aside class="project-sidebar">
+                    <h3>Project Info</h3>
+                    <ul>
+                        <li><strong>Languages:</strong>Python</li>
+                        <li><strong>Status:</strong> Completed</li>
+                        <li><strong>Type:</strong> Game Robot/ Virtual Player</li>
+                    </ul>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+            <a href="#support">Support</a>
+            <a href="#careers">Careers</a>
+        </div>
+        <p>&copy; 2025 Tan Productions. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
