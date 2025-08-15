@@ -13,6 +13,7 @@
             color: #333;
             background: #111;
             overflow-x: hidden;
+            display: none; /* Hide page until password entered */
         }
         nav {
             position: fixed; top: 0; width: 100%;
@@ -166,6 +167,17 @@
     </footer>
 
     <script>
+        // Password prompt
+        const password = "letmein"; // Change this
+        let userPass = prompt("Enter password to access this page:");
+
+        if (userPass === password) {
+            document.body.style.display = "block";
+        } else {
+            alert("Incorrect password. Access denied.");
+            window.location.href = "about:blank"; // Redirects away
+        }
+
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
