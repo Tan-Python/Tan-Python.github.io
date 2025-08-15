@@ -10,36 +10,36 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: #111;
+            color: #eee;
+            background: #000;
             overflow-x: hidden;
-            display: none; /* Hide page until password entered */
+            display: none; /* Hidden until password is correct */
         }
         nav {
             position: fixed; top: 0; width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(10px); z-index: 1000;
             padding: 1rem 2rem; transition: all 0.3s ease;
         }
-        nav.scrolled { box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1); }
+        nav.scrolled { box-shadow: 0 2px 20px rgba(0, 0, 0, 0.6); }
         .nav-container {
             max-width: 1200px; margin: 0 auto;
             display: flex; justify-content: space-between; align-items: center;
         }
         .logo {
             font-size: 1.5rem; font-weight: 700;
-            background: linear-gradient(45deg, #dc2626, #991b1b);
+            background: linear-gradient(45deg, #00ff88, #00ccff);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
         .nav-links { display: flex; list-style: none; gap: 2rem; }
         .nav-links a {
-            text-decoration: none; color: #333; font-weight: 500; transition: all 0.3s ease;
+            text-decoration: none; color: #eee; font-weight: 500; transition: all 0.3s ease;
             position: relative;
         }
-        .nav-links a:hover { color: #dc2626; }
+        .nav-links a:hover { color: #00ff88; }
         .nav-links a::after {
             content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0;
-            background: linear-gradient(45deg, #dc2626, #991b1b);
+            background: linear-gradient(45deg, #00ff88, #00ccff);
             transition: width 0.3s ease;
         }
         .nav-links a:hover::after { width: 100%; }
@@ -62,40 +62,40 @@
         }
         .section {
             padding: 5rem 2rem;
-            background: white;
+            background: #000;
         }
         .container {
             max-width: 1200px; margin: 0 auto;
         }
         .section-title {
             text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;
-            background: linear-gradient(45deg, #dc2626, #991b1b);
+            background: linear-gradient(45deg, #00ff88, #00ccff);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
         .section-subtitle {
-            text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 3rem;
+            text-align: center; font-size: 1.1rem; color: #aaa; margin-bottom: 3rem;
             max-width: 600px; margin-left: auto; margin-right: auto;
         }
         .project-details {
             display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; margin-top: 3rem;
         }
-        .project-description p { margin-bottom: 1.5rem; color: #555; }
+        .project-description p { margin-bottom: 1.5rem; color: #ccc; }
         .project-sidebar {
-            background: #f9fafb; padding: 1.5rem; border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            background: #111; padding: 1.5rem; border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
         }
-        .project-sidebar h3 { margin-bottom: 1rem; color: #dc2626; }
+        .project-sidebar h3 { margin-bottom: 1rem; color: #00ff88; }
         .project-sidebar ul { list-style: none; }
-        .project-sidebar li { margin-bottom: 0.5rem; color: #555; }
+        .project-sidebar li { margin-bottom: 0.5rem; color: #ccc; }
         footer {
-            background: #1a1a1a; color: white; text-align: center; padding: 3rem 2rem;
+            background: #000; color: white; text-align: center; padding: 3rem 2rem;
         }
         .footer-links {
             display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem;
             flex-wrap: wrap;
         }
-        .footer-links a { color: #ccc; text-decoration: none; }
-        .footer-links a:hover { color: white; }
+        .footer-links a { color: #00ccff; text-decoration: none; }
+        .footer-links a:hover { color: #00ff88; }
         @media (max-width: 768px) {
             .project-details { grid-template-columns: 1fr; }
             .nav-links { display: none; }
@@ -133,23 +133,22 @@
                         Idea Description: Hat sensor monitoring temp/humidity, alerting for breaks.<br>
                         Implementation Steps: DHT sensor on Arduino; buzzer; app link to the manager; hat prototype.</p>
                     <p><b>2. Sign Language Translator Cap</b>
-                        Problem Solved: _Communication barriers.<br>
-                        Idea Description: Camera to Al then ear-pice connected wirelessly to our phone<br>
-                        Implementation Steps: Gesture mapping with a raspberry pi camera</p>
-                    <p><b>3. Public Transport Overcrowd Alert ( For vehicle and humans )</b>
+                        Problem Solved: Communication barriers.<br>
+                        Idea Description: Camera to AI then ear-piece connected wirelessly to our phone.<br>
+                        Implementation Steps: Gesture mapping with a Raspberry Pi camera.</p>
+                    <p><b>3. Public Transport Overcrowd Alert (For vehicle and humans)</b><br>
                         Problem Solved: Unsafe crowding.<br>
-                        Idea Description: Camera in a place where overcrowding generally happens and Al counts the number of people<br>
-                        Implementation Steps: Al model to count people.</p>
-                    
+                        Idea Description: Camera in a place where overcrowding generally happens and AI counts the number of people.<br>
+                        Implementation Steps: AI model to count people.</p>
                 </div>
 
                 <aside class="project-sidebar">
                     <h3>Project Info</h3>
                     <ul>
-                        <li><strong>Languages:</strong>C++ (Arduino Uno)</li>
-                        <li><strong>Status:</strong> Idealizing </li>
-                        <li><strong>Type:</strong> Invention </li>
-                        <li><strong>Theme:</strong> Realistic / Action </li>
+                        <li><strong>Languages:</strong> C++ (Arduino Uno)</li>
+                        <li><strong>Status:</strong> Idealizing</li>
+                        <li><strong>Type:</strong> Invention</li>
+                        <li><strong>Theme:</strong> Realistic / Action</li>
                     </ul>
                 </aside>
             </div>
@@ -167,15 +166,14 @@
     </footer>
 
     <script>
-        // Password prompt
-        const password = "letmein"; // Change this
-        let userPass = prompt("Enter password to access this page:");
-
-        if (userPass === password) {
+        // Password protection
+        const password = "letmein"; // Change this to your own password
+        const entered = prompt("Enter password to access this page:");
+        if (entered === password) {
             document.body.style.display = "block";
         } else {
             alert("Incorrect password. Access denied.");
-            window.location.href = "about:blank"; // Redirects away
+            window.location.href = "about:blank";
         }
 
         // Navbar scroll effect
