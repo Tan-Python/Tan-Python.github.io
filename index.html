@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -228,6 +229,70 @@
             margin-right: auto;
         }
 
+        /* Progress Bars */
+        .progress-container {
+            max-width: 600px;
+            margin: 3rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-item h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .progress-bar {
+            background: #f0f0f0;
+            border-radius: 10px;
+            height: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            transition: width 1s ease-in-out;
+            position: relative;
+        }
+
+        .progress-bar-fill::after {
+            content: attr(data-label);
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .progress-python .progress-bar-fill {
+            background: #41dc8e;
+            width: 90%;
+        }
+
+        .progress-lua .progress-bar-fill {
+            background: #3e236e;
+            width: 90%;
+        }
+
+        .progress-cpp .progress-bar-fill {
+            background: #00008b;
+            width: 25%;
+        }
+
         /* Features Grid */
         .features-grid {
             display: grid;
@@ -384,6 +449,10 @@
                 flex-direction: column;
                 gap: 1rem;
             }
+
+            .progress-container {
+                padding: 1rem;
+            }
         }
 
         /* Smooth scrolling */
@@ -402,6 +471,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#games">Games</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -422,25 +492,29 @@
     <main>
         <section id="features" class="section">
             <div class="container">
-                <h2 class="section-title">Coding Languages I know</h2>
-                <p class="section-subtitle">Everything you need to build amazing experiences.</p>
+                <h2 class="section-title">Coding Languages I Know</h2>
+                <p class="section-subtitle">Proficiency in various programming languages.</p>
                 
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">🐍</div>
-                        <h3>Python</h3>
+                <div class="progress-container">
+                    <div class="progress-item progress-python">
+                        <h3><span class="feature-icon">🐍</span> Python</h3>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" data-label="90%"></div>
+                        </div>
                         <p>Python is a high-level, interpreted programming language known for its clean, readable syntax and versatility across fields like web development, data science, and artificial intelligence.</p>
                     </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">📱</div>
-                        <h3>Lua</h3>
+                    <div class="progress-item progress-lua">
+                        <h3><span class="feature-icon">📱</span> Lua</h3>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" data-label="90%"></div>
+                        </div>
                         <p>Lua is a lightweight, high-level scripting language designed for embedding into applications and known for its simplicity, efficiency, and small footprint.</p>
                     </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">🖥️</div>
-                        <h3>C++</h3>
+                    <div class="progress-item progress-cpp">
+                        <h3><span class="feature-icon">🖥️</span> C++</h3>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" data-label="25%"></div>
+                        </div>
                         <p>C++ is a powerful, compiled programming language that extends C with object-oriented features, offering both low-level control and high-level abstractions.</p>
                     </div>
                 </div>
@@ -469,6 +543,36 @@
                         <div class="feature-icon">⛑️</div>
                         <h3>Heat Stroke Helmet</h3>
                         <p>A special helmet made for construction workers that reminds them to take a break.<br><a href="currentatl.html">Read more...</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="games" class="section" style="background: #f8fafc;">
+            <div class="container">
+                <h2 class="section-title">Games</h2>
+                <p class="section-subtitle">Explore our collection of exciting games built with creativity and passion.</p>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🌓</div>
+                        <h3>The Eclipsian</h3>
+                        <p>An immersive RPG game built with Lua, featuring epic quests and dynamic worlds.</p>
+                        <a href="https://www.roblox.com/games/19004841698/The-Eclipsian-Official-Release" class="btn btn-primary">Play</a>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">😈</div>
+                        <h3>Taratarus</h3>
+                        <p>A Dark Souls like realistic Roblox RPG game.</p>
+                        <a href="tartarus.html" class="btn btn-primary">Play</a>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🗺️</div>
+                        <h3>Atlas Bot (Discord ver)</h3>
+                        <p>A game bot made in python for playing the verbal game "Atlas".</p>
+                        <a href="atlasbot.html" class="btn btn-primary">Play</a>
                     </div>
                 </div>
             </div>
@@ -549,13 +653,14 @@
             });
         }, observerOptions);
 
-        // Observe feature cards
-        document.querySelectorAll('.feature-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'all 0.6s ease';
-            observer.observe(card);
-        });
+        // Observe progress container
+        const progressContainer = document.querySelector('.progress-container');
+        if (progressContainer) {
+            progressContainer.style.opacity = '0';
+            progressContainer.style.transform = 'translateY(30px)';
+            progressContainer.style.transition = 'all 0.6s ease';
+            observer.observe(progressContainer);
+        }
 
         // Parallax effect for hero section
         window.addEventListener('scroll', () => {
