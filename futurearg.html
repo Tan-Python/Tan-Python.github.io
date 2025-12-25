@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ARG Password Gate</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #eee;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    p.intro {
+      margin-bottom: 40px;
+      font-size: 18px;
+      color: #ccc;
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 200px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-left: 10px;
+    }
+    #output {
+      margin-top: 30px;
+      font-size: 18px;
+      color: #0f0;
+      white-space: pre-line; /* preserves line breaks */
+    }
+  </style>
+</head>
+<body>
+  <h1>So you have chosen to take this path <br> Congratulations on getting this far <br>(you havent gotten far at all)</h1>
+  <p class="intro">
+    This is the main hub. It marks a <b>true</b> beginning to your journey (you know how much i like using that word).
+    Of course I made a full guide to the arg but im not going to make it easy for you to get that guide.<br>
+    <br>
+    Mend the scattered clues and walk the place<br>
+    A journey deep but has a trace<br>
+    Seek the depths in places far<br>
+    Keep a memory, face a scar<br>
+    (all passwords are completely lowercase)
+  </p>
+
+  <input type="password" id="passwordInput" placeholder="Enter password">
+  <button onclick="checkPassword()">Submit</button>
+  <div id="output"></div>
+
+  <script>
+    function checkPassword() {
+      const input = document.getElementById("passwordInput").value.trim().toLowerCase();
+      const output = document.getElementById("output");
+
+      // Multi-line answers using template literals
+      const answers = {
+        "password": `Very clever but youre wrong`,
+        
+        "mask": `"No cost too great"
+The next password is a word that represents "higher beings".
+ A four letter word of low saturation. `,
+        
+        "pale": `That must have been really easy for you. If you are me of course.
+The next clue wont be in this website anymore.
+`,
+        
+        "cipher": `Decode the numbers: 3-1-20-5.
+It spells 'CATE'.
+But what does CATE unlock?`
+      };
+
+      if (answers[input]) {
+        output.textContent = answers[input];
+      } else {
+        output.textContent = "Incorrect password. Try again.";
+      }
+    }
+  </script>
+</body>
+</html>
