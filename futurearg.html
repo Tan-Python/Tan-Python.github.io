@@ -35,6 +35,11 @@
       color: #0f0;
       white-space: pre-line; /* preserves line breaks */
     }
+    /* Hidden text style */
+    .hidden-text {
+      color: #141414; /* same as background */
+      user-select: text; /* allow copying */
+    }
   </style>
 </head>
 <body>
@@ -48,6 +53,12 @@
     Seek the depths in places far<br>
     Keep a memory, face a scar<br>
     (all passwords are completely lowercase)
+  </p>
+
+  <!-- Hidden text section -->
+  <p class="hidden-text">
+    15 16 1 3 9 20 25
+    <br><br><br>
   </p>
 
   <input type="password" id="passwordInput" placeholder="Enter password">
@@ -68,14 +79,27 @@ The next password is a word that represents "higher beings".
  A four letter word of low saturation. `,
         
         "pale": `That must have been really easy for you. If you are me of course.
-The next clue wont be in this website anymore.
-`,
+The next clue is on your screen. Always has been.
+If you see hard enough then you might catch a glimpse of it.`,
         
-        "cipher": `Decode the numbers: 3-1-20-5.
-It spells 'CATE'.
-But what does CATE unlock?`
+        "opacity": `You found the hidden message
+The next clue is still in this website but not in the way you think,
+See my perspective, how Im pulling the strings.`
       };
-
+      
+      /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      If you see this message that means you either found the correct clue or you are just trying to cheat
+      If you are not cheating and actually got this far then this message is for you:
+      
+      Obviously i cant continue the arg here because you can just find the answers so you will have to find my second arg hub.
+      As you have come this far i will be giving you a chance to get the full guide to the arg,
+      but it will be luck based…
+      
+      If you want the guide its at the The Python Gambit.py in this exact repo
+      run it until you get the link
+      
+      
+      */
       if (answers[input]) {
         output.textContent = answers[input];
       } else {
