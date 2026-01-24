@@ -65,7 +65,7 @@
       const output = document.getElementById("output");
 
       try {
-        const res = await fetch(`https://your-worker.yourname.workers.dev/api/check?answer=${encodeURIComponent(input)}`);
+        const res = await fetch(`https://futurearg.tancanvin.workers.dev/api/check?answer=${encodeURIComponent(input)}`);
         const text = await res.text();
         output.textContent = text;
       } catch (err) {
