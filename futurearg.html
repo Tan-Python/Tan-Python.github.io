@@ -1,111 +1,268 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>ARG Password Gate</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: #eee;
-      text-align: center;
-      padding: 50px;
-    }
-    h1 {
-      margin-bottom: 10px;
-    }
-    p.intro {
-      margin-bottom: 40px;
-      font-size: 18px;
-      color: #ccc;
-    }
-    input {
-      padding: 10px;
-      font-size: 16px;
-      width: 200px;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      margin-left: 10px;
-    }
-    #output {
-      margin-top: 30px;
-      font-size: 18px;
-      color: #0f0;
-      white-space: pre-line; /* preserves line breaks */
-    }
-    /* Hidden text style */
-    .hidden-text {
-      color: #141414; /* same as background */
-      user-select: text; /* allow copying */
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@300;400;600&display=swap');
+
+```
+:root {
+  --bg: #0a0a0a;
+  --surface: #111;
+  --green: #00ff88;
+  --green-dim: #00aa55;
+  --red: #ff3344;
+  --text: #cccccc;
+  --muted: #555;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Rajdhani', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  text-align: center;
+  padding: 50px 20px 80px;
+  min-height: 100vh;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(0,255,136,0.02) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(0,255,136,0.02) 40px);
+}
+
+h1 {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: clamp(16px, 2.5vw, 22px);
+  color: var(--green);
+  line-height: 1.7;
+  margin-bottom: 12px;
+  text-shadow: 0 0 20px rgba(0,255,136,0.4);
+  letter-spacing: 1px;
+}
+
+.intro {
+  margin: 30px auto 40px;
+  font-size: 17px;
+  color: var(--text);
+  max-width: 620px;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.intro b { color: #fff; font-weight: 600; }
+
+.poem {
+  margin-top: 18px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 14px;
+  color: var(--green-dim);
+  line-height: 2;
+  letter-spacing: 1px;
+}
+
+.hint-note {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--muted);
+  font-family: 'Share Tech Mono', monospace;
+}
+
+/* The hidden text — blends into background, selectable */
+.hidden-text {
+  color: #0f0f0f;
+  user-select: text;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 14px;
+  line-height: 2.5;
+  margin: 10px auto;
+  max-width: 400px;
+  background: transparent;
+}
+
+.input-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+input[type="password"] {
+  padding: 10px 16px;
+  font-size: 16px;
+  width: 220px;
+  background: #0d0d0d;
+  border: 1px solid #333;
+  color: var(--green);
+  font-family: 'Share Tech Mono', monospace;
+  letter-spacing: 3px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input[type="password"]:focus {
+  border-color: var(--green-dim);
+  box-shadow: 0 0 8px rgba(0,255,136,0.15);
+}
+
+button {
+  padding: 10px 22px;
+  font-size: 15px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  letter-spacing: 2px;
+  background: transparent;
+  color: var(--green);
+  border: 1px solid var(--green-dim);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+button:hover {
+  background: rgba(0,255,136,0.08);
+  box-shadow: 0 0 12px rgba(0,255,136,0.2);
+}
+
+#output {
+  margin: 30px auto 0;
+  font-size: 16px;
+  color: var(--green);
+  white-space: pre-line;
+  max-width: 580px;
+  line-height: 1.9;
+  font-family: 'Share Tech Mono', monospace;
+  min-height: 40px;
+  padding: 16px;
+  border-left: 2px solid transparent;
+  transition: border-color 0.3s, color 0.3s;
+}
+
+#output.error {
+  color: var(--red);
+  border-left-color: var(--red);
+}
+
+#output.success {
+  border-left-color: var(--green-dim);
+}
+
+.scanline {
+  pointer-events: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(0,0,0,0.08) 4px
+  );
+  z-index: 9999;
+}
+```
+
   </style>
 </head>
 <body>
-  <h1>So you have chosen to take this path <br> Congratulations on getting this far <br>(you havent gotten far at all)</h1>
+  <div class="scanline"></div>
+
+  <h1>
+    So you have chosen to take this path<br>
+    Congratulations on getting this far<br>
+    <span style="color:#555">(you haven't gotten far at all)</span>
+  </h1>
+
   <p class="intro">
-    This is the main hub. It marks a <b>true</b> beginning to your journey (you know how much i like using that word).
-    Of course I made a full guide to the arg but im not going to make it easy for you to get that guide.<br>
-    <br>
-    Mend the scattered clues and walk the place<br>
-    A journey deep but has a trace<br>
-    Seek the depths in places far<br>
-    Keep a memory, face a scar<br>
-    (all passwords are completely lowercase)
+    This is the main hub. It marks a <b>true</b> beginning to your journey
+    (you know how much I like using that word).
+    Of course I made a full guide to the arg but I'm not going to make it easy for you to get that guide.<br><br>
+    <span class="poem">
+      Mend the scattered clues and walk the place<br>
+      A journey deep but has a trace<br>
+      Seek the depths in places far<br>
+      Keep a memory, face a scar
+    </span>
+    <span class="hint-note">(all passwords are completely lowercase)</span>
   </p>
 
-  <!-- Hidden text section -->
-  <p class="hidden-text">
+  <!-- Hidden text: same color as background, still selectable/copyable -->
+
+  <p class="hidden-text" aria-hidden="true">
     15 16 1 3 9 20 25
     <br><br><br>
   </p>
 
-  <input type="password" id="passwordInput" placeholder="Enter password">
-  <button onclick="checkPassword()">Submit</button>
+  <div class="input-row">
+    <input type="password" id="passwordInput" placeholder="enter password" autocomplete="off" spellcheck="false">
+    <button onclick="checkPassword()">[ SUBMIT ]</button>
+  </div>
+
   <div id="output"></div>
 
   <script>
-    function checkPassword() {
-      const input = document.getElementById("passwordInput").value.trim().toLowerCase();
+    // Passwords are stored only as SHA-256 hashes — never in plain text.
+    // Even if someone reads this source, they see only hashes.
+    // To reverse a hash they'd need to already know or brute-force the word.
+    const ANSWERS = {
+      "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8":
+        `Very clever but you're wrong`,
+
+      "48bf9b4f142ab45cac6f33cf99415bca6ca8e07608a031237aa76560fec2204b":
+        `"No cost too great"\nThe next password is a word that represents "higher beings".\nA four letter word of low saturation.`,
+
+      "3e6805d9e6f7212aec46b462f2a6a6695ca11e5fe710ef2ea7e0fa36557e9c8e":
+        `That must have been really easy for you. If you are me of course.\nThe next clue is on your screen. Always has been.\nIf you stare hard enough then you might catch a glimpse of it.`,
+
+      "ad9a0b2eddd5849db61cfa7031fd5ff6d22ac8148b08d60f79ba0120dac0f5b8":
+        `You found the hidden message\nThe next clue is still in this website but not in the way you think,\nSee my perspective, how I am pulling the strings.`
+    };
+
+    /*
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      If you see this message that means you either found the correct clue or you are just trying to cheat.
+      If you are not cheating and actually got this far then this message is for you:
+
+      The next clue is "Circular movement of spherical objects"
+
+      If you want the guide just remember where it is...
+    */
+
+    async function sha256(message) {
+      const msgBuffer = new TextEncoder().encode(message);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    async function checkPassword() {
+      const raw = document.getElementById("passwordInput").value.trim().toLowerCase();
       const output = document.getElementById("output");
 
-      // Multi-line answers using template literals
-      const answers = {
-        "password": `Very clever but youre wrong`,
-        
-        "mask": `"No cost too great"
-The next password is a word that represents "higher beings".
- A four letter word of low saturation. `,
-        
-        "pale": `That must have been really easy for you. If you are me of course.
-The next clue is on your screen. Always has been.
-If you see hard enough then you might catch a glimpse of it.`,
-        
-        "opacity": `You found the hidden message
-The next clue is still in this website but not in the way you think,
-See my perspective, how I am pulling the strings.`
-      };
-      
-      /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      If you see this message that means you either found the correct clue or you are just trying to cheat
-      If you are not cheating and actually got this far then this message is for you:
-      
-      Obviously i cant continue the arg here because you can just find the answers so you will have to find my second arg hub.
-      As you have come this far i will be giving you a chance to get the full guide to the arg,
-      but it will be luck based…
-      
-      If you want the guide its at the The Python Gambit.py in this exact repo
-      run it until you get the link
-      
-      
-      */
-      if (answers[input]) {
-        output.textContent = answers[input];
+      if (!raw) {
+        output.textContent = "Enter a password first.";
+        output.className = "error";
+        return;
+      }
+
+      const hash = await sha256(raw);
+      output.className = "";
+
+      if (ANSWERS[hash]) {
+        output.textContent = ANSWERS[hash];
+        output.className = "success";
       } else {
         output.textContent = "Incorrect password. Try again.";
+        output.className = "error";
       }
     }
+
+    document.getElementById("passwordInput").addEventListener("keydown", e => {
+      if (e.key === "Enter") checkPassword();
+    });
   </script>
+
 </body>
 </html>
