@@ -1,0 +1,32 @@
+/* Dark Mode Styles */
+body {
+  background-color: #121212; /* deep dark background */
+  color: #e0e0e0;           /* light text for contrast */
+  font-family: Arial, sans-serif;
+}
+
+a {
+  color: #bb86fc;           /* soft purple links */
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ffffff;           /* bright hover effect */
+}
+
+header, footer {
+  background-color: #1f1f1f; /* slightly lighter dark sections */
+  padding: 1rem;
+}
+
+button {
+  background-color: #333333;
+  color: #e0e0e0;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #444444;
+}
