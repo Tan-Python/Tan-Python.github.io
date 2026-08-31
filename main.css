@@ -39,13 +39,15 @@ header, footer {
 }
 
 button {
-  background-color: #333333;
+  background-color: #1f1f1f;
   color: #e0e0e0;
-  border: none;
+  border: 5px solid #333333;
+  display: block;
+  margin: auto;
   padding: 0.5rem 1rem;
   border-radius: 4px;
 }
 
 button:hover {
-  background-color: #444444;
+  background-color: #333333;
 }
